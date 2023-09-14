@@ -12,6 +12,7 @@ bot = telebot.TeleBot(token=TOKEN)
 class GetImageAudio():
     api_image = "https://api.thecatapi.com/v1/images/search"
     
+    
     @classmethod
     def get_image(cls):
         return requests.get(cls.api_image).json()[0].get("url")
@@ -42,6 +43,11 @@ def get_media(message: telebot.types.Message):
             chat_id=message.from_user.id,
             photo=GetImageAudio.get_image()
         
+        )
+    elif message.text == "get audio":
+        bot.send_audio(
+            chat_id=message.from_user.id,
+            audio=
         )
 
 bot.infinity_polling(timeout=600)
